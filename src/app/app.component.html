@@ -26,29 +26,42 @@
           <div class="card-card-container">
             <h5>Aggregated confirmed</h5>
             <h4 style="color: #FD4E71; margin:0.3rem 0">272,314</h4>
-            <h6>23%</h6>
+            <h6 style="color:rgb(179, 174, 174);font-size: 1rem;">23%</h6>
           </div>
         </div>
         <div class="card">
           <div class="card-card-container">
             <h5>Active confirmed</h5>
-            <h4>169,793</h4>
-            <h6>22%</h6>
+            <h4 style="color:#FF751A; margin:0.3rem 0">169,793</h4>
+            <h6 style="color:rgb(179, 174, 174);font-size: 1rem;">22%</h6>
           </div>
         </div>
         <div class="card">
           <div class="card-card-container">
             <h5>Recovered</h5>
-            <h4>91 316</h4>
-            <h6>16%</h6>
+            <h4 style="color:#6DD400; margin:0.3rem 0">91 316</h4>
+            <h6 style="color:rgb(179, 174, 174);font-size: 1rem;">16%</h6>
           </div>
         </div>
         <div class="card">
           <div class="card-card-container">
             <h5>Death</h5>
-            <h4>11 205</h4>
-            <h6>20%</h6>
+            <h4 style="color:#9475FF; margin:0.3rem 0">11 205</h4>
+            <h6 style="color:rgb(179, 174, 174);font-size: 1rem;">20%</h6>
           </div>
+        </div>
+      </div>
+      <!-- map and dropdown list area -->
+      <div class="map-dropdown-card">
+        <div class="map-dropdown-card-container">
+          <div class="drop-down">
+            <input type="text" id="myInput"  (keyup)="onKey($event)" placeholder="Search for names.." title="Type in a name">
+            <ul id="myUL">
+              <li *ngFor="let link of links"><a  href="#">{{ link.country}} : {{link.amount}}</a></li>
+            </ul>
+          </div>
+          <div class="map">map</div>
+          <div class="graph">graph</div>
         </div>
       </div>
     </div>
@@ -57,7 +70,7 @@
         <div class="info-card-1">
           <div class="card-card-container">
             <img class="info-image" src="../assets/medical_officer.svg" alt="">
-            <div class="card-content">  
+            <div class="card-content">
               <h5><b>John Doe</b></h5>
               <h4>Architect & Engineer</h4>
               <h6>1000</h6>

@@ -122,8 +122,10 @@
 }
 
 .card-card-container {
-  padding: 2px 16px;
+  /* padding: 2px 16px;
   padding-top: 1.5rem;
+  padding-bottom: 1.5rem; */
+  margin:1rem 0;
 }
 
 .card-container {
@@ -179,4 +181,77 @@
 
 .card-content{
   margin-top: 3rem; 
+}
+
+/* map and dropdown styles */
+
+.map-dropdown-card{
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 20px;
+  text-align: center;
+  background-color: white;
+  flex: 1;
+  margin: 0.5rem;
+  padding: 1rem;
+}
+
+.map-dropdown-card-container{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-areas:'dropdown map' 'dropdown graph';
+  grid-template-columns:30% 70%;
+}
+/* drop down  */
+
+.drop-down{
+  height:70vh;
+  overflow:scroll;
+  background-color: rgb(255, 255, 255);
+  grid-area: dropdown;
+}
+
+#myUL{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  outline: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+#myInput{
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+/* end of drop down */
+.map{
+ background-color: darkcyan;
+ grid-area: map;
+}
+
+.graph{
+  background-color: darkgoldenrod;
+  grid-area: graph;
 }

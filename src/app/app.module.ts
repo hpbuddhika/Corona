@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import {MatCardModule} from '@angular/material/card'; 
+import {MatListModule} from '@angular/material/list';  
+import {MatSelectModule} from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatListModule,
+    MatSelectModule
   
   ],
   providers: [],
