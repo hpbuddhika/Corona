@@ -23,6 +23,14 @@ export class AppService {
         });
     }
 
+    getCoronaSummary(){
+        return this.http.get("https://api.covid19api.com/summary", {
+            "headers": {}
+        }).catch((error)=>{
+            return Observable.throw(error.message||"server error")
+        });
+    }
+
     getCoronaSafetyInstruction(): Observable<any> {
         return this.http.get("https://coronavirus-monitor.p.rapidapi.com/coronavirus/random_masks_usage_instructions.php", {
             "headers": {

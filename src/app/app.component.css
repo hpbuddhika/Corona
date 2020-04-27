@@ -113,8 +113,12 @@
   text-align: center;
   height: 6rem;
   background-color: white;
-  flex:1;
-  margin:0 1rem;
+  flex: 1;
+  margin: 0 0.5rem;
+}
+
+#card-1{
+  margin-left: 1.5rem;
 }
 
 .card:hover {
@@ -125,7 +129,7 @@
   /* padding: 2px 16px;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem; */
-  margin:1rem 0;
+  margin: 1rem 0;
 }
 
 .card-container {
@@ -166,26 +170,25 @@
   margin-top: 5.8rem;
 }
 
-.info-card-1{
+.info-card-1 {
   position: relative;
 }
-
 
 .info-image {
   position: absolute;
   width: 200px;
   height: 200px;
-  top:-7rem;
-  left:4rem;
+  top: -7rem;
+  left: 4rem;
 }
 
-.card-content{
-  margin-top: 3rem; 
+.card-content {
+  margin-top: 3rem;
 }
 
 /* map and dropdown styles */
 
-.map-dropdown-card{
+.map-dropdown-card {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 20px;
@@ -196,23 +199,33 @@
   padding: 1rem;
 }
 
-.map-dropdown-card-container{
-  width:100%;
-  height:100%;
-  display:grid;
-  grid-template-areas:'dropdown map' 'dropdown graph';
-  grid-template-columns:30% 70%;
+.map-dropdown-card-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "dropdown map" "dropdown map";
+  grid-template-columns: 30% 70%;
 }
+
+/* map */
+.map {
+  grid-area: map;
+}
+
+#mapid {
+  height: 100%;
+}
+
 /* drop down  */
 
-.drop-down{
-  height:70vh;
-  overflow:scroll;
+.drop-down {
+  height: 70vh;
+  overflow: scroll;
   background-color: rgb(255, 255, 255);
   grid-area: dropdown;
 }
 
-#myUL{
+#myUL {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -227,15 +240,15 @@
   outline: none;
   font-size: 18px;
   color: black;
-  display: block
+  display: block;
 }
 
 #myUL li a:hover:not(.header) {
   background-color: #eee;
 }
 
-#myInput{
-  background-image: url('/css/searchicon.png');
+#myInput {
+  background-image: url("/css/searchicon.png");
   background-position: 10px 12px;
   background-repeat: no-repeat;
   width: 100%;
@@ -246,12 +259,8 @@
 }
 
 /* end of drop down */
-.map{
- background-color: darkcyan;
- grid-area: map;
-}
 
-.graph{
+/* .graph{
   background-color: darkgoldenrod;
   grid-area: graph;
-}
+} */
