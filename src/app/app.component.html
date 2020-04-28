@@ -69,10 +69,10 @@
       <div class="map-dropdown-card">
         <div class="map-dropdown-card-container">
           <div class="drop-down">
-            <input type="text" id="myInput" (keyup)="onKey($event)" placeholder="Search for names.."
+            <input  type="text" id="myInput" (keyup)="onKey($event)" placeholder="Search for names.."
               title="Type in a name">
             <ul id="myUL">
-              <li *ngFor="let countryDetail of countryViceDetails"><a href="#">{{countryDetail.Country}}</a></li>
+              <li *ngFor="let countryDetail of countryViceDetails"><a (click)="onClickCountry(countryDetail)" href="#">{{countryDetail.Country}}</a></li>
             </ul>
           </div>
           <div class="map">

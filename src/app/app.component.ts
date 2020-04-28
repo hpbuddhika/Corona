@@ -20,49 +20,37 @@ export class AppComponent implements OnInit {
     NewRecovered: 0,
     TotalRecovered: 0
   }
-  countryViceDetails:CountryViceDetails[];
-
-  links: any = [
-    {
-      country: "sri lanka",
-      amount: "454"
-    },
-    {
-      country: "america",
-      amount: "4540"
-    }, {
-      country: "braxil",
-      amount: "54"
-    },
-    {
-      country: "uk",
-      amount: "456"
-    },
-    {
-      country: "Gahana",
-      amount: "100"
-    }, {
-      country: "india",
-      amount: "4562"
-    }
-  ]
-
-
-  title = 'corona';
-  valuesSriLanka: ValuesSriLanka = {
-    id: "",
-    countryName: "",
-    totalCases: "",
-    newCases: "",
-    activeCases: "",
-    totalDeaths: "",
-    newDeaths: "",
-    totalRecovered: "",
-    seriousCritical: "",
-    region: null,
-    totalCasesPer1m: "",
-    recordDate: ""
+  countryViceDetails: CountryViceDetails[];
+  globalDetails: CountryViceDetails = {
+    Country: "Global",
+    CountryCode: null,
+    Slug: null,
+    NewConfirmed: null,
+    TotalConfirmed: null,
+    NewDeaths: null,
+    TotalDeaths: null,
+    NewRecovered: null,
+    TotalRecovered: null,
+    Date: null
   }
+
+
+
+  // title = 'corona';
+  // valuesSriLanka: ValuesSriLanka = {
+  //   id: "",
+  //   countryName: "",
+  //   totalCases: "",
+  //   newCases: "",
+  //   activeCases: "",
+  //   totalDeaths: "",
+  //   newDeaths: "",
+  //   totalRecovered: "",
+  //   seriousCritical: "",
+  //   region: null,
+  //   totalCasesPer1m: "",
+  //   recordDate: ""
+  // }
 
   constructor(private appService: AppService) {
 
@@ -78,7 +66,16 @@ export class AppComponent implements OnInit {
 
     this.appService.getCoronaSummary().subscribe((data) => {
       this.globalData = data['Global']
+      //making globalDeatils object
+      this.globalDetails.NewConfirmed = this.globalData.NewConfirmed;
+      this.globalDetails.TotalConfirmed = this.globalData.TotalConfirmed;
+      this.globalDetails.NewRecovered = this.globalData.NewRecovered;
+      this.globalDetails.TotalRecovered = this.globalData.TotalRecovered;
+      this.globalDetails.NewDeaths = this.globalData.NewDeaths;
+      this.globalDetails.TotalDeaths = this.globalData.TotalDeaths;
+
       this.countryViceDetails = data['Countries']
+      this.countryViceDetails.splice(0, 0, this.globalDetails);
       console.log(this.countryViceDetails);
       this.totalNum(this.globalData);
     }, (error) => {
@@ -122,24 +119,33 @@ export class AppComponent implements OnInit {
     }).addTo(this.mymap);
 
 
-
-
-
-
-
-
-
   }
 
 
-  totalNum(globalData: GlobalData) {
+  totalNum(globalData) {
     for (let key in globalData) {
-      let numberValue: number = globalData[key]
-      console.log(typeof numberValue)
-      this.totalNumber = this.totalNumber + numberValue
+      if (typeof globalData[key] == 'number') {
+        let numberValue: number = globalData[key]
+        console.log(typeof numberValue)
+        this.totalNumber = this.totalNumber + numberValue
+      }
     }
     console.log(this.totalNumber)
+    console.log(this.globalData);
 
+  }
+
+  onClickCountry(countryDetail) {
+
+    this.globalData.NewConfirmed = countryDetail.NewConfirmed;
+    this.globalData.TotalConfirmed = countryDetail.TotalConfirmed;
+    this.globalData.NewRecovered = countryDetail.NewRecovered;
+    this.globalData.TotalRecovered = countryDetail.TotalRecovered;
+    this.globalData.NewDeaths = countryDetail.NewDeaths;
+    this.globalData.TotalDeaths = countryDetail.TotalDeaths;
+    console.log(this.globalData);
+    this.totalNumber = 0;
+    this.totalNum(this.globalData);
   }
 
 
