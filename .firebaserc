@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "corona-4dbe8": {
+      "hosting": {
+        "corona": [
+          "corona-4dbe8"
+        ]
+      }
+    }
+  }
+}

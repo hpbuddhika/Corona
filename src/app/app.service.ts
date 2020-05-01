@@ -44,12 +44,13 @@ export class AppService {
         });
     }
 
-    
-
-
-
-
-
+    getCountryLocation(country:string):Observable<any>{
+        return this.http.get("https://api.covid19api.com/country/"+country+"/status/confirmed", {
+            "headers": {}
+        }).catch((error)=>{
+            return Observable.throw(error.message||"server error")
+        });
+    }
 
 
 }

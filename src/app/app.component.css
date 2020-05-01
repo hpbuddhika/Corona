@@ -172,20 +172,45 @@
 
 .info-card-1 {
   position: relative;
+  background-color: #6236FF;  
+} 
+
+.symptom-heading{
+  margin-top:5rem; 
+  color:white   
 }
 
 .info-image {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  top: -7rem;
-  left: 4rem;
+  width: 150px;
+  height: 150px;
+  top: -5rem;   
+  left: 3rem;  
 }
 
 .card-content {
   margin-top: 3rem;
 }
 
+/* scrol bar styling */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FDBC5D;
+  border-radius: 5px; 
+}
+ 
 /* map and dropdown styles */
 
 .map-dropdown-card {
@@ -220,7 +245,7 @@
 
 .drop-down {
   height: 70vh;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: rgb(255, 255, 255);
   grid-area: dropdown;
 }
@@ -229,6 +254,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  border-radius:20px;  
 }
 
 #myUL li a {
@@ -255,7 +281,9 @@
   font-size: 16px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
+  border-radius:10px;
   margin-bottom: 12px;
+  outline-width: 0; 
 }
 
 /* end of drop down */

@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
 
   mymap;
   totalNumber: number = 0;
-  countryList
+  countryList;
+  markerList = [];
   globalData: GlobalData = {
     NewConfirmed: 0,
     TotalConfirmed: 0,
@@ -82,17 +83,6 @@ export class AppComponent implements OnInit {
       console.log(error);
     });
 
-    // this.appService.getCoronaSafetyInstruction().subscribe((data) => {
-    //   // console.log(data['latest_stat_by_country'][0]);
-    //   console.log("2 nd call "+data.text())
-    //   this.createImageFromBlob(data);
-    // }, error => {
-    //   console.log(error);
-    // });
-
-    // setInterval(() => {
-    //   console.log('HI')
-    // }, 1000)
 
     this.mymap = L.map("mapid").setView([0, 0], 1);
 
@@ -110,16 +100,23 @@ export class AppComponent implements OnInit {
           "pk.eyJ1IjoicHJhZGVlcGJ1ZGRoaWthIiwiYSI6ImNrOTh0aWM1MDA1OGIzbHFqcG9zNWhoZDYifQ.hoEc1ChjYfftpi3UqEvEwg",
       }
     ).addTo(this.mymap);
+    this.addMarker(L, this.mymap, 0, 0);
 
-    var circle = L.circle([51.508, -0.11], {
+  }
+
+  addMarker(L, map, lat, lng) {
+
+    var circle = L.circle([lat, lng], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
       radius: 10000
-    }).addTo(this.mymap);
-
-
+    }).addTo(map);
+    this.markerList.push(circle);
+    console.log("marker list")
+    console.log(this.markerList);
   }
+
 
 
   totalNum(globalData) {
@@ -130,26 +127,42 @@ export class AppComponent implements OnInit {
         this.totalNumber = this.totalNumber + numberValue
       }
     }
-    console.log(this.totalNumber)
+    console.log(this.totalNumber) 
     console.log(this.globalData);
 
   }
 
   onClickCountry(countryDetail) {
 
+    this.getCountryGeoLocation(countryDetail.Country);
     this.globalData.NewConfirmed = countryDetail.NewConfirmed;
     this.globalData.TotalConfirmed = countryDetail.TotalConfirmed;
     this.globalData.NewRecovered = countryDetail.NewRecovered;
     this.globalData.TotalRecovered = countryDetail.TotalRecovered;
     this.globalData.NewDeaths = countryDetail.NewDeaths;
     this.globalData.TotalDeaths = countryDetail.TotalDeaths;
-    console.log(this.globalData);
     this.totalNumber = 0;
     this.totalNum(this.globalData);
+
   }
 
 
+  getCountryGeoLocation(countryName: string) {
 
+    this.appService.getCountryLocation(countryName).subscribe(
+      (result) => {
+        let latOfCountry = result[0].Lat;
+        let lonOfCountry = result[0].Lon;
+        this.markerList.splice(0,this.markerList.length)
+        console.log(this.markerList)
+        this.addMarker(L, this.mymap, latOfCountry, lonOfCountry);
+      },
+      (error) => {
+        console.log(error);
+      } 
+    )
+
+  }
 
 
 

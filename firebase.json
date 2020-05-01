@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "corona",
+      "public": "dist/corona",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
